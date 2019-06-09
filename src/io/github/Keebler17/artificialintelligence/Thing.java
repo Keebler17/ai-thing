@@ -69,7 +69,7 @@ public class Thing extends Circle {
 			return dist/1800;
 		}
 	}
-
+m
 	public void resetPointer() {
 		ptr = 0;
 	}

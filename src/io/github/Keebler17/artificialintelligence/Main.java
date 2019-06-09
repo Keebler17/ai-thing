@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 public class Main extends Application {
@@ -34,6 +36,13 @@ public class Main extends Application {
 		stage.setScene(scene);
 		stage.show();
 
+
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				event.consume();
+			}
+		});
 
 		destination.setCenterX(destinationX);
 		destination.setCenterY(destinationY);
@@ -133,6 +142,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+		Platform.setImplicitExit(false);
 		launch(args);
 	}
 }
